@@ -1,0 +1,4 @@
+// Auto complete import path
+{
+    "exclude": ["node_modules"]
+}

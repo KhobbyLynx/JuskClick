@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import Add from './pages/add/Add'
+import Gig from './pages/gig/Gig'
+import Gigs from './pages/gigs/Gigs'
+import Home from './pages/home/Home'
+import Message from './pages/message/Message'
+import Messages from './pages/messages/Messages'
+import MyGigs from './pages/myGigs/MyGigs'
+import Orders from './pages/orders/Orders'
+
+import './App.scss'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='add' element={<Add />} />
+          <Route path='orders' element={<Orders />} />
+          <Route path='gigs' element={<Gigs />} />
+          <Route path='mygigs' element={<MyGigs />} />
+          <Route path='messages' element={<Messages />} />
+
+          <Route path='message' >
+            <Route path=':id' element={<Message />} />
+          </Route>
+
+          <Route path='gig'>
+            <Route  path=':id' element={<Gig />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   )
 }
