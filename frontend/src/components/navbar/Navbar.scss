@@ -3,7 +3,7 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(217, 217, 217);
-    font-size: 16px;
+    font-size: 13px;
     transition: 0.6s all ease;
     position: sticky;
     top: 0;
@@ -15,14 +15,33 @@
     .container{
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 1400px;
+        justify-content: space-around;
+        width: 100%;
         margin: auto;
-        padding: 18px 0;
+        padding: 10px 0;
+
+        .toggle--nav-icon {
+            display: none;
+            border-radius: 50%;
+            font-size: 26px;
+            cursor: pointer;
+            transition: 0.3s all ease;
+
+            &:hover {
+                background-color: #4ac836;
+                color: #fff;
+                padding: 2px;
+            }
+
+            @media screen and (max-width: '999px') {
+                display: flex;
+            }
+        }
         
         .logo{
             img{
-                width: 120px;
+                width: 72px;
+                height: auto;
                 cursor: pointer;
             }
         }
@@ -37,6 +56,10 @@
                 white-space: nowrap;
                 cursor: pointer;
             }
+            
+            @media screen and (max-width: '999px') {
+                display: none;
+            }
         }
 
         .account{
@@ -45,11 +68,22 @@
             gap: 30px;
             white-space: nowrap;
             font-family: 'Poppins', sans-serif;
-
+            
+            
+            
             .login{
                 cursor: pointer;
                 font-weight: 600;
+                transition: 0.3s all ease;
+                
+                &:hover {
+                    color: #4ac836;
+                }
+                @media screen and (max-width: '999px') {
+                    display: none;
+                }
             }
+            
             button{
                 padding: 14px 50px;
                 border: none;
@@ -59,9 +93,17 @@
                 font-family: 'Poppins', sans-serif;
                 font-weight: 600;
                 cursor: pointer;
+                transition: 0.3s all ease;
 
                 &:hover {
                     background-color: #4ac836;
+                }
+
+                @media screen and (max-width: '999px') {
+                    padding: 5px 18px;
+                    border-radius: 8px;
+                    font-size: 12px;
+                    font-weight: 500;
                 }
             }
             .user {
@@ -84,6 +126,13 @@
                     object-fit: cover;
                 }
 
+                .username {
+                    font-weight: 600;
+                    @media screen and (max-width: '999px') {
+                        display: none;
+                    }
+                }
+
                 .options {
                     position: absolute;
                     top: 50px;
@@ -101,7 +150,7 @@
                     font-weight: 300;;
                     display: none;
 
-                    span{
+                    .span{
                         &:hover{
                             color: #4ac836;
                         }
@@ -119,11 +168,87 @@
     }
     
     .menu{
-        width: 1400px;
+        width: 100%;
         padding: 10px 0;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        span{
+            &:hover{
+                color: rgba(0, 0, 0, 0.639);
+            }
+        }
+    }
+
+    .toggle--nav{
+        display: flex;
+        white-space: nowrap;       
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 30px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #fff;
+        height: 100vh;
+        width: 100%;
+        transition: 0.6s all ease;
+        gap: 14px;
+
+        hr{
+            margin: 0;
+        }
+
+        .user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 8px auto;
+            cursor: default;
+
+            img{
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .username {
+                padding-top: 8px;
+                font-weight: 600;
+            }
+
+            .freelancer {
+                font-size: 12px;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            align-self: center;
+            justify-self: center;
+            margin: 0 auto;
+            width: 100%;
+            
+            button {        
+                width: 100%;
+                cursor: pointer;
+                border: none;
+                background-color: rgb(217, 217, 217);
+                color: #000;
+                padding: 10px;
+                transition: 0.3s all ease;
+                
+                &:hover{
+                    background-color: #4ac836;
+                    color: #fff;
+                }
+            }
+        }
+
     }
 }

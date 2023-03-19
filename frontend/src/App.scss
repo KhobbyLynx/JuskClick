@@ -1,4 +1,9 @@
 .link {
     text-decoration: none;
     color: inherit;
-  }
+    transition: 0.3s all ease;
+    &:hover {
+      color: #4ac836;
+    }
+}
+
