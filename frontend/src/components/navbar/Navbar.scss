@@ -22,15 +22,12 @@
 
         .toggle--nav-icon {
             display: none;
-            border-radius: 50%;
             font-size: 26px;
             cursor: pointer;
             transition: 0.3s all ease;
 
             &:hover {
-                background-color: #4ac836;
-                color: #fff;
-                padding: 2px;
+                color: #4ac836;
             }
 
             @media screen and (max-width: '999px') {
@@ -116,6 +113,10 @@
                 &:hover{
                     .options{
                         display: flex;
+
+                        @media screen and (max-width: '999px') {
+                            display: none;
+                        }
                     }
                 }
                 
@@ -124,6 +125,20 @@
                     height: 50px;
                     border-radius: 50%;
                     object-fit: cover;
+                    @media screen and (max-width: '999px') {
+                        display: none;
+                    }
+                }
+
+                .message--icon {
+                    display: none;
+                    border-radius: 50%;
+                    font-size: 26px;
+                    cursor: pointer;
+        
+                    @media screen and (max-width: '999px') {
+                        display: flex;
+                    }
                 }
 
                 .username {
@@ -150,6 +165,10 @@
                     font-weight: 300;;
                     display: none;
 
+                    @media screen and (max-width: '999px') {
+                        display: none;
+                    }
+
                     .span{
                         &:hover{
                             color: #4ac836;
@@ -175,7 +194,8 @@
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
         white-space: nowrap;
-        cursor: pointer;
+        overflow-x: scroll;
+
         span{
             &:hover{
                 color: rgba(0, 0, 0, 0.639);
@@ -188,16 +208,17 @@
         white-space: nowrap;       
         flex-direction: column;
         align-items: flex-start;
-        padding: 20px 30px;
-        position: absolute;
-        top: 60px;
-        left: 0;
+        padding: 20px 30px 0;
         background-color: #fff;
         height: 100vh;
         width: 100%;
         transition: 0.6s all ease;
         gap: 14px;
-
+        
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        z-index: 5;
         hr{
             margin: 0;
         }
@@ -234,18 +255,22 @@
             margin: 0 auto;
             width: 100%;
             
+            hr{
+                margin-bottom: 20px;
+            }
+
             button {        
                 width: 100%;
                 cursor: pointer;
                 border: none;
-                background-color: rgb(217, 217, 217);
-                color: #000;
+                background-color:#53A846;
+                color: #fff;
                 padding: 10px;
                 transition: 0.3s all ease;
                 
+                
                 &:hover{
                     background-color: #4ac836;
-                    color: #fff;
                 }
             }
         }

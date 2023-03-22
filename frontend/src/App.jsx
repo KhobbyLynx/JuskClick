@@ -11,6 +11,7 @@ import MyGigs from './pages/myGigs/MyGigs'
 import Orders from './pages/orders/Orders'
 
 import './App.scss'
+import About from './pages/about/about'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='gigs' element={<Gigs />} />
           <Route path='mygigs' element={<MyGigs />} />
           <Route path='messages' element={<Messages />} />
+          <Route path='about-us' element={<About />} />
 
           <Route path='message' >
             <Route path=':id' element={<Message />} />

@@ -4,6 +4,7 @@ import Footer from './footer/footer'
 import Navbar from './navbar/Navbar'
 
 const Layout = () => {
+
   return (
     <div>
         <Navbar/>
