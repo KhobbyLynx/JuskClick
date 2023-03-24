@@ -10,12 +10,12 @@ import './Home.scss'
 const Home = () => {
   return (
     <div className='home'>
-      {/* <Featured /> */}
-      {/* <Trustedby /> */}
+      <Featured />
+      <Trustedby />
       <Section1 />
-      <Section2 />
+      {/* <Section2 />
       <Section3 />
-      <Section4 />
+      <Section4 /> */}
     </div>
   )
 }

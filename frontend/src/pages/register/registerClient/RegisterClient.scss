@@ -1,0 +1,100 @@
+.reg--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    h2{
+        color: #605C5C;
+        font-size: 20px;
+        text-align: center;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-top: 10px;
+        .input{
+            width: 80%;
+            padding: 12px 26px;
+            border: 1px solid #56A942;
+            border-radius: 5px;
+            outline: none;
+
+            &::placeholder {
+                color: #5B5959;
+                font-size: 11px;
+                text-transform: uppercase;
+            }
+        }
+
+        .agree{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 80%;
+            input[type="checkbox"]{
+                appearance: none;
+                width: 25px;
+                height: 20px;
+                border: 1px solid #56A942;
+                border-radius: 3px;
+                cursor: pointer;
+                &:checked{
+                    &::after{
+                        font: 50px;
+                        content: "\2714";
+                        color: #4ac836;
+                        outline: 3px solid #56A942;
+                        border-radius: 3px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+            label{
+                line-height: 12px;
+                font-size: 10px;
+                
+                .tc{
+                    color: #56A942;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        button{
+            cursor: pointer;
+            width: 80%;
+            padding: 12px 20px;
+            background-color: #53A846;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 11px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            
+            &:hover{
+                background-color: #4ac836;
+            }
+        }
+    }
+    .links{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;        
+        text-decoration: underline;
+        color: #53A846;
+        padding: 10px;
+
+        .redirect{
+            font-size: 12px;
+        }
+    }
+}

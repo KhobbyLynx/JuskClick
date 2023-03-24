@@ -9,9 +9,14 @@ import Message from './pages/message/Message'
 import Messages from './pages/messages/Messages'
 import MyGigs from './pages/myGigs/MyGigs'
 import Orders from './pages/orders/Orders'
+import Account from './pages/account/account'
 
 import './App.scss'
 import About from './pages/about/about'
+import Login from './pages/login/Login'
+import RegisterClient from './pages/register/registerClient/RegisterClient'
+import RegisterFreelancer from './pages/register/registerFreelancer/RegisterFreelancer'
+import RegisterOpt from './pages/register/getStarted/RegisterOpt'
 
 
 function App() {
@@ -19,6 +24,12 @@ function App() {
     <div className="App">
     <BrowserRouter>
       <Routes>
+        <Route path='account' element={<Account />} >
+          <Route index element={<RegisterOpt />} />
+          <Route path='register-client' element={<RegisterClient />} />
+          <Route path='register-freelancer' element={<RegisterFreelancer />} />
+          <Route path='log-in' element={<Login />} />
+        </Route>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='add' element={<Add />} />

@@ -4,8 +4,8 @@ import { images } from '../../constants'
 
 const Trustedby = () => {
   return (
-    <div className='trustedby'>
-        <div className="container">
+    <div className='trustedBy'>
+        <div className="trustedBy--container">
             <div className="head--text">
                 <div className="hr"><hr/></div>
                 <span>Trusted By</span>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { images } from '../../constants'
 import './Featured.scss'
 
@@ -12,7 +13,7 @@ const Featured = () => {
             Forget the old rules. You can have the best people. <br />
             Right now. Right here.
           </h4>
-          <button>Get Started</button>
+          <Link to='account' className='link'><button>Get Started</button></Link>
         </div>
         <div className="right">
           <img src={images.featured} alt="art" />

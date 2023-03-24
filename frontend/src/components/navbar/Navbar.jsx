@@ -38,13 +38,13 @@ const Navbar = () => {
     color: "#4ac836",
   }
 
-  let currentUser= {
-    id: 1,
-    username: "Samuel Tetteh",
-    isSeller: false
-  }
+  // let currentUser= {
+  //   id: 1,
+  //   username: "Samuel Tetteh",
+  //   isSeller: false
+  // }
 
-  // let currentUser;
+  let currentUser;
 
   return (
     <div className={active || pathname !== '/' ? "navbar active" : "navbar"}>
@@ -68,10 +68,10 @@ const Navbar = () => {
         <div className="account">
           {!currentUser &&
           <>
-            <Link to='' className='login link'>
+            <Link to='account/log-in' className='login link'>
               Log In
             </Link>
-            <Link to='' className='link'>
+            <Link to='account' className='link'>
               <button>Sign In</button>
             </Link>   
           </>
