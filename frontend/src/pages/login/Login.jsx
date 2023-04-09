@@ -1,10 +1,5 @@
-import { auth, googleProvider } from '../../config/firebase'
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-
-
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { async } from '@firebase/util'
 
 const Login = () => {
   const [formData, setFormData] = useState(
@@ -27,7 +22,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+
     } catch (error) {
       console.error(error)
     }
@@ -39,13 +34,7 @@ const Login = () => {
     )    
   }
 
-  const googleAcc =async () => {
-    try {
-      await signInWithPopup(auth, googleProvider)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+
   return (
     <div className='reg--container'>
       <h2>Login Here</h2>
@@ -74,7 +63,6 @@ const Login = () => {
         />
         <button>Log In</button>
       </form>
-        <button onClick={googleAcc}>Sign In With Google</button>
       <div className="links">
         <Link className='link redirect' to='/account'>Register</Link>
         <Link className='link redirect' to='/account/reset'>Reset Password</Link>

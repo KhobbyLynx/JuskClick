@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react'
-import './Navbar.scss'
-import logo from '../../assets/logo.png'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { AiOutlineMenuUnfold, AiOutlineClose } from 'react-icons/ai'
 import { FiMessageSquare } from 'react-icons/fi'
-import Data from '../../data'
+import logo from '../../assets/logo.png'
+import Data from '../../navData'
+import './Navbar.scss'
 
 const Navbar = () => {
   //This state Changes the navbar view on scroll
@@ -12,11 +12,6 @@ const Navbar = () => {
   const [toggle, setToggle ] = useState(false)
   const { pathname } = useLocation()
   
-  const isActive = () => {
-    //On vertical scroll, the state of active is set to true
-    window.scrollY > 0 ? setActive(true) : setActive(false)
-  }
-
   useEffect(()=>{
     window.addEventListener('scroll', isActive);
     //A clean up funtion, runs when the navbar component is not been displayed
@@ -24,6 +19,12 @@ const Navbar = () => {
       window.removeEventListener('scroll', isActive)
     }
   },[])
+  
+  const isActive = () => {
+    //On vertical scroll, the state of active is set to true
+    window.scrollY > 0 ? setActive(true) : setActive(false)
+  }
+
 
 
   function addNav() {
@@ -38,13 +39,13 @@ const Navbar = () => {
     color: "#4ac836",
   }
 
-  // let currentUser= {
-  //   id: 1,
-  //   username: "Samuel Tetteh",
-  //   isSeller: false
-  // }
+  let currentUser= {
+    id: 1,
+    username: "Samuel Tetteh",
+    isSeller: true
+  }
 
-  let currentUser;
+  // let currentUser;
 
   return (
     <div className={active || pathname !== '/' ? "navbar active" : "navbar"}>

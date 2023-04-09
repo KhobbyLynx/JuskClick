@@ -13,7 +13,11 @@ const Featured = () => {
             Forget the old rules. You can have the best people. <br />
             Right now. Right here.
           </h4>
-          <Link to='account' className='link'><button>Get Started</button></Link>
+          {/* <Link to='account' className='link'><button className='featuredBtn'>Get Started</button></Link> */}
+          <div className="search">
+            <input type="search" name="search" id="search" placeholder='Try "Building a Web App"'/>
+            <button className='searchBtn'>Search</button>
+          </div>
         </div>
         <div className="right">
           <img src={images.featured} alt="art" />
