@@ -25,7 +25,7 @@ import { cards } from '../../data';
 //     />
 //   );
 // }
-console.log( {cards})
+// console.log( {cards})
 export default class SwipeToSlide extends Component {
   render() {
     const settings = {

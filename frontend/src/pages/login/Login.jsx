@@ -1,7 +1,9 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+  const [error, setError] = useState(null)
   const [formData, setFormData] = useState(
     {
       email: '',
@@ -22,16 +24,24 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-
-    } catch (error) {
-      console.error(error)
-    }
-    setFormData(
+      const res = await axios.post("http://localhost:5000/api/auth/login", 
       {
-        email: '',
-        password: '',
-      }
-    )    
+        email: formData.email,
+        password: formData.password  
+      }, 
+      {withCredentials: true}
+      );
+      console.log(res.data)
+    } catch (error) {
+      setError(error)
+      console.log(error)
+    }
+    // setFormData(
+    //   {
+    //     email: '',
+    //     password: '',
+    //   }
+    // )    
   }
 
 
