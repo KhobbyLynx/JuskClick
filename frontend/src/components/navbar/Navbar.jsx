@@ -39,13 +39,13 @@ const Navbar = () => {
     color: "#4ac836",
   }
 
-  let currentUser= {
-    id: 1,
-    username: "Samuel Tetteh",
-    isSeller: true
-  }
+  // let currentUser= {
+  //   id: 1,
+  //   username: "Samuel Tetteh",
+  //   isSeller: true
+  // }
 
-  // let currentUser;
+  let currentUser;
 
   return (
     <div className={active || pathname !== '/' ? "navbar active" : "navbar"}>
