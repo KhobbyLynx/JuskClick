@@ -31,12 +31,7 @@ const navData = [
         {
             title: "Messages",
             link: "messages"
-        },
-        {
-            title: "Log Out",
-            link: "log-out"
         }
-
     ],
     [
         //seller user data

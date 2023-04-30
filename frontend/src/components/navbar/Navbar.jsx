@@ -1,12 +1,14 @@
 import {useEffect, useState} from 'react'
-import { NavLink, Link, useLocation } from 'react-router-dom'
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineMenuUnfold, AiOutlineClose } from 'react-icons/ai'
 import { FiMessageSquare } from 'react-icons/fi'
 import logo from '../../assets/logo.png'
 import Data from '../../navData'
 import './Navbar.scss'
+import newRequest from '../../utils/newRequest.js'
 
 const Navbar = () => {
+  const navigate = useNavigate();
   //This state Changes the navbar view on scroll
   const [active, setActive] = useState(false)
   const [toggle, setToggle ] = useState(false)
@@ -25,8 +27,6 @@ const Navbar = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false)
   }
 
-
-
   function addNav() {
     setToggle(true)
   }
@@ -39,13 +39,20 @@ const Navbar = () => {
     color: "#4ac836",
   }
 
-  // let currentUser= {
-  //   id: 1,
-  //   username: "Samuel Tetteh",
-  //   isSeller: true
-  // }
-
-  let currentUser;
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+  
+  const logout = async () =>{
+    try {
+      await newRequest.post(
+        `/auth/logout`,
+      )
+      localStorage.clear()
+      // localStorage.setItem('currentUser', null)
+      navigate("/account/Log-in")
+    } catch (error) {
+      console.log(error)      
+    }
+  }
 
   return (
     <div className={active || pathname !== '/' ? "navbar active" : "navbar"}>
@@ -63,7 +70,14 @@ const Navbar = () => {
         </div>
         <nav>
           {Data[0].map(linkObj => (
-            <NavLink to={linkObj.link} className='link' style={({isActive}) => isActive ? activeStyles : null}key={linkObj.link}>{linkObj.title}</NavLink>
+            <NavLink 
+              to={linkObj.link} 
+              className='link' 
+              style={({isActive}) => isActive ? activeStyles : null} 
+              key={linkObj.link}
+            >
+              {linkObj.title}
+            </NavLink>
           ))}
         </nav>
         <div className="account">
@@ -79,22 +93,37 @@ const Navbar = () => {
           }
           {currentUser && 
           <div className='user'>
-            <img src="https://samueltetteh.netlify.app/static/media/aboutImg.b2c6393a6bb40b3e6d60.jpg" alt="user image" />
-            <span className='username'>{currentUser.username}</span>
+            <img src={currentUser.img} alt="user image" />
+            <span className='username'>{currentUser.name}</span>
             <Link to='messages' className='link'><FiMessageSquare className='message--icon'/></Link>
             <div className="options">
               {currentUser?.isSeller &&
                 (
                   <>
                     {Data[2].map(linkObj => (
-                      <Link to={linkObj.link} className='link span' key={linkObj.link}>{linkObj.title}</Link>
+                      <Link 
+                        to={linkObj.link} 
+                        className='link span' 
+                        key={linkObj.link}
+                      >
+                        {linkObj.title}
+                      </Link>
                     ))}
                   </>
                 )
               }
+              
               {Data[1].map(linkObj => (
-                <Link to={linkObj.link} className='link span' key={linkObj.link}>{linkObj.title}</Link>
+                <Link 
+                  to={linkObj.link} 
+                  className='link span' 
+                  key={linkObj.link}
+                  >
+                    {linkObj.title}
+                  </Link>
               ))}
+
+              <Link className='link span' onClick={logout}>Log Out</Link>
             </div>
           </div>
           }
@@ -107,9 +136,15 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu scroll">
-          {Data[3].map(dataObj => (
-            <Link to={dataObj.link} className='link' key={dataObj.link}>{dataObj.title}</Link>
-          ))}
+            {Data[3].map(dataObj => (
+              <Link 
+                to={dataObj.link} 
+                className='link' 
+                key={dataObj.link}
+              >
+                {dataObj.title}
+              </Link>
+            ))}
           </div>
         </>
       )}
@@ -118,12 +153,12 @@ const Navbar = () => {
         <nav className='toggle--nav'>
           { currentUser &&
             <div className='user'>
-              <img src="https://samueltetteh.netlify.app/static/media/aboutImg.b2c6393a6bb40b3e6d60.jpg" alt="user image" />
-              <span className='username'>{currentUser.username}</span>
-              { currentUser?.isSeller ?
-                <span className='freelancer'>Freelancer</span> :
-                <span className='freelancer'>Client</span>
-              }
+              <img src={currentUser.img} alt="user image" />
+              <span className='username'>{currentUser.name}</span>
+                { currentUser?.isSeller ?
+                  <span className='account--type'>Freelancer</span> :
+                  <span className='account--type'>Client</span>
+                }
             </div>
           }
           {!currentUser ? 
@@ -132,48 +167,75 @@ const Navbar = () => {
               {Data[0].map(linkObj => (
                 <>
                   <hr />
-                  <Link to={linkObj.link} className='link' onClick={removeNav} key={linkObj.link}>{linkObj.title}</Link>
+                  <Link 
+                    to={linkObj.link} 
+                    className='link' 
+                    onClick={removeNav} 
+                    key={linkObj.link}
+                  >
+                    {linkObj.title}
+                  </Link>
                 </>
               ))}
               <div className='btn'>
                 <hr />
-                <Link to='log-in'><button>Log In</button></Link>
+                <Link to='log-in'>
+                  <button>Log In</button>
+                </Link>
               </div>
             </>
           ):
           (
             <>
-              <Link to='orders' className='link' onClick={removeNav}>Orders</Link>
+              <Link 
+                to='orders' 
+                className='link' 
+                onClick={removeNav}
+              >
+                Orders
+              </Link>
               <hr />
-              <Link to='messages' className='link' onClick={removeNav}>Messages</Link>
+
+              <Link 
+                to='messages' 
+                className='link' 
+                onClick={removeNav}
+              >
+                Messages
+              </Link>
               <hr />
-            {currentUser?.isSeller ? (     
+
+            {currentUser?.isSeller && (     
                 <>
                   {Data[2].map(linkObj => (
                     <>
-                    <Link to={linkObj.link} className='link' onClick={removeNav}>{linkObj.title}</Link>
-                    <hr />
+                      <Link 
+                        to={linkObj.link} 
+                        className='link' 
+                        onClick={removeNav}
+                      >
+                        {linkObj.title}
+                      </Link>
+                      <hr />
                     </>
                   ))}
                 </>
-              ): 
-              (
-                <>
-                <Link to='post-a-job' className='link' onClick={removeNav}>Post A Job</Link>
-                <hr />
-                </>
               )
             }
+              <Link to='post-a-job' className='link' onClick={removeNav}>Post A Job</Link>
+              <hr />
               <Link to='why-juskclick' className='link' onClick={removeNav}>Why JuskClick</Link>
-              <Link to='login' className='link btn' onClick={removeNav}>
-                <button>Log Out</button>
+
+              <Link 
+                className='link btn' 
+                onClick={removeNav}
+              >
+                <button onClick={logout}>Log Out</button>
               </Link>
             </>
-          )
-          }
+          )}
         </nav>
       }
-
     </div>
   )
 }

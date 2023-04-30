@@ -67,6 +67,9 @@
                     &::placeholder{
                         color: #5e6d5574;
                     }
+                    @media screen and (max-width: '999px') {
+                        width: 260px;
+                    }
                 }
                 .searchBtn{
                     border: none;

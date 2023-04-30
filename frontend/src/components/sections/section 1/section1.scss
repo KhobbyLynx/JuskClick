@@ -3,20 +3,37 @@
     align-items: center;
     justify-content: space-between;
     padding: 60px 42px;
+
+    @media screen and (max-width: '999px') {
+        flex-wrap: wrap;
+        padding: 60px 42px;
+        width: 100%;
+        margin: auto;
+    }
     
     .img{
         flex-basis: 50%;
+
+        @media screen and (max-width: '999px') {
+            flex-basis: 100%;
+        }
         img{
             width: 520px;
             height: auto;
             object-fit: cover;
-
+            @media screen and (max-width: '999px') {
+                width: 320px;
+            }
         }
     }
     .content--container{
         flex-basis: 50%;
         display: flex;
         flex-direction: column;
+
+         @media screen and (max-width: '999px') {
+            flex-basis: 100%;
+        }
 
         h2{
             font-family: cursive;

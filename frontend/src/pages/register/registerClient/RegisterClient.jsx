@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './RegisterClient.scss'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import newRequest from '../../../utils/newRequest.js'
+import upload from '../../../utils/upload.js'
+import './Register.scss'
+import { MdAccountCircle } from 'react-icons/md'
 
 const RegisterClient = () => {
+  const navigate = useNavigate();
+  const [previewUrl, setPreviewUrl] = useState(null)
+  const [error, setError] = useState(null)
   const [formData, setFormData] = useState(
     {
       firstName: '',
@@ -10,39 +16,78 @@ const RegisterClient = () => {
       email: '',
       password: '',
       confirmPassword: '',
-      checked: false
+      checked: false,
+      file: ''
     }
   )
+
+  // rendering profile preview
+  useEffect(() => {
+    if(!formData.file) return;
+
+    let imageUrl = URL.createObjectURL(formData.file)
+    setPreviewUrl(imageUrl)
+
+    // free memory
+    return () => {
+      URL.revokeObjectURL(imageUrl)
+    }
+  }, [formData.file])
+  
 
   function handleChange(event) {
     const {name, value, type, checked} = event.target
     setFormData(prevFormData => {
       return {
         ...prevFormData, 
-        [name]: type === 'checkbox' ? checked : value
+        [name]: type === 'checkbox' ? checked : type === 'file' ? event.target.files[0] : value
       }
     })
   }
-  
-  
-  function handleSubmit(event) {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData)
-    setFormData(
-      {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        checked: false
-      }
-    )    
+    const url = await upload(formData.file);
+
+    try {
+      const res = await newRequest.post(
+        "/auth/register",
+        {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.confirmPassword,
+          isSeller: false,
+          img: url
+        }
+      );
+
+      localStorage.setItem("currentUser", JSON.stringify(res.data))
+      navigate("/")
+    } catch (error) {
+      setError(error.response.data)
+    }
   }
+  
   return (
     <div className='reg--container'>
       <h2>Sign up to hire talent</h2>
       <form className="content" onSubmit={handleSubmit}>
+        <label 
+          htmlFor="profile" 
+          className='profile--preview'
+        >
+          {previewUrl ? <img src={previewUrl} className="profile--image"/> :
+          <MdAccountCircle className='profile--icon'/>
+          }
+          <span>Profile</span>
+        </label>
+        <input 
+          id='profile'
+          className='profile'
+          type="file"
+          onChange={handleChange}
+          name="file"
+        />
         <input 
           required 
           autoComplete='on' 
@@ -112,6 +157,8 @@ const RegisterClient = () => {
         </div>
         <button>Create an Account</button>
       </form>
+      {error && error}
+
       <div className="links">
         <Link className='link redirect' to='/account/register-freelancer'>Apply as Freelancer</Link>
         <Link className='link redirect' to='/account/log-in'>Log In</Link>

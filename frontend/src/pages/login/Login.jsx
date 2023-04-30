@@ -1,8 +1,9 @@
-import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import newRequest from '../../utils/newRequest.js'
 
 const Login = () => {
+  const navigate = useNavigate()
   const [error, setError] = useState(null)
   const [formData, setFormData] = useState(
     {
@@ -23,25 +24,21 @@ const Login = () => {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", 
-      {
-        email: formData.email,
-        password: formData.password  
-      }, 
-      {withCredentials: true}
+      const res = await newRequest.post(
+        "/auth/login", 
+        {
+          email: formData.email,
+          password: formData.password  
+        }
       );
-      console.log(res.data)
+      localStorage.setItem("currentUser", JSON.stringify(res.data))
+      navigate("/")
+      
     } catch (error) {
-      setError(error)
-      console.log(error)
-    }
-    // setFormData(
-    //   {
-    //     email: '',
-    //     password: '',
-    //   }
-    // )    
+      setError(error.response.data)
+    }  
   }
 
 
@@ -72,6 +69,7 @@ const Login = () => {
           placeholder='Password'
         />
         <button>Log In</button>
+        {error && error}
       </form>
       <div className="links">
         <Link className='link redirect' to='/account'>Register</Link>
