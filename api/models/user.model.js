@@ -2,10 +2,9 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
- username: {
-    type: String,
-    required: true,
-    unique: true,
+ name: {
+   type: String,
+   required: true,
  },
  email: {
     type: String,
@@ -22,7 +21,7 @@ const userSchema = new Schema({
  },
  country: {
     type: String,
-    required: true
+    required: false
  },
  phone: {
     type: String,
@@ -42,3 +41,4 @@ const userSchema = new Schema({
 });
 
 export default mongoose.model("User", userSchema)
+
