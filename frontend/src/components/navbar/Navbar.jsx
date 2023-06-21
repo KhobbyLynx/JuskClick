@@ -87,7 +87,7 @@ const Navbar = () => {
               Log In
             </Link>
             <Link to='account' className='link'>
-              <button>Sign In</button>
+              <button>Sign Up</button>
             </Link>   
           </>
           }

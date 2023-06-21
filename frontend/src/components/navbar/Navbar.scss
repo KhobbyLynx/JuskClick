@@ -7,6 +7,7 @@
     transition: 0.6s all ease;
     position: sticky;
     top: 0;
+    z-index: 999;
     
     &.active{
         background-color: #fff;
@@ -27,7 +28,7 @@
             transition: 0.3s all ease;
 
             &:hover {
-                color: #4ac836;
+                color: #108A00;
             }
 
             @media screen and (max-width: '999px') {
@@ -66,15 +67,13 @@
             white-space: nowrap;
             font-family: 'Poppins', sans-serif;
             
-            
-            
             .login{
                 cursor: pointer;
                 font-weight: 600;
                 transition: 0.3s all ease;
                 
                 &:hover {
-                    color: #4ac836;
+                    color: #108A00;
                 }
                 @media screen and (max-width: '999px') {
                     display: none;
@@ -82,10 +81,10 @@
             }
             
             button{
-                padding: 14px 50px;
+                padding: 10px 30px;
                 border: none;
-                border-radius: 15px;
-                background-color:#53A846;
+                border-radius: 30px;
+                background-color:#108A00;
                 color: #fff;
                 font-family: 'Poppins', sans-serif;
                 font-weight: 600;
@@ -93,12 +92,11 @@
                 transition: 0.3s all ease;
 
                 &:hover {
-                    background-color: #4ac836;
+                    background-color: #14a800;
                 }
 
                 @media screen and (max-width: '999px') {
                     padding: 5px 18px;
-                    border-radius: 8px;
                     font-size: 12px;
                     font-weight: 500;
                 }
@@ -171,7 +169,7 @@
 
                     .span{
                         &:hover{
-                            color: #4ac836;
+                            color: #108A00;
                         }
                     }
                 }
@@ -263,14 +261,14 @@
                 width: 100%;
                 cursor: pointer;
                 border: none;
-                background-color:#53A846;
+                background-color:#108A00;
                 color: #fff;
                 padding: 10px;
                 transition: 0.3s all ease;
                 
                 
                 &:hover{
-                    background-color: #4ac836;
+                    background-color: #14a800;
                 }
             }
         }

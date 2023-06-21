@@ -65,6 +65,7 @@ const RegisterClient = () => {
       navigate("/")
     } catch (error) {
       setError(error.response.data)
+      console.log(error.response.data)
     }
   }
   
@@ -87,6 +88,8 @@ const RegisterClient = () => {
           type="file"
           onChange={handleChange}
           name="file"
+          required
+          accept='image/*'
         />
         <input 
           required 
@@ -157,7 +160,7 @@ const RegisterClient = () => {
         </div>
         <button>Create an Account</button>
       </form>
-      {error && error}
+        {error && <p className="error">Something went wrong</p>}
 
       <div className="links">
         <Link className='link redirect' to='/account/register-freelancer'>Apply as Freelancer</Link>

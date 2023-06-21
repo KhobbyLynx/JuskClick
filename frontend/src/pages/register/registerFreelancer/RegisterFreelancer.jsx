@@ -23,7 +23,7 @@ const RegisterFreelancer = () => {
   useEffect( ()=> {
     if(!formData.file) return;
     
-    let imageUrl = URL.craeteObjectURL(formData.file)
+    let imageUrl = URL.createObjectURL(formData.file)
     setPreviewUrl(imageUrl)
 
     return () => {
@@ -60,6 +60,7 @@ const RegisterFreelancer = () => {
       navigate("/")
     } catch (error) {
       setError(error.response.data)
+      console.log(error.response.data)
     }
   }
 
@@ -83,6 +84,7 @@ const RegisterFreelancer = () => {
           name='file' 
           onChange={handleChange}
           required
+          accept='image/*'
         />
         <input 
           required 
@@ -153,7 +155,7 @@ const RegisterFreelancer = () => {
         </div>
         <button>Join Our Team</button>
       </form>
-        {error && error}
+      {error && <p className="error">Something went wrong</p>}
 
       <div className="links">
         <Link className='link redirect' to='/account/register-client'>Apply as Client</Link>

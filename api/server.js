@@ -27,7 +27,18 @@ const connect = async () => {
 
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors({origin: "http://localhost:5173", credentials: true}))
+// app.use(cors({origin: "http://localhost:5173/", credentials: true}))
+// app.use(cors({origin: "https://justclickjobs.netlify.app", credentials: true}))
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://justclickjobs.netlify.app'],
+  credentials: true
+}));
+
+app.get("/", async (req, res) => {
+  res.status(200).send({
+    message: "Hello from JustClick"
+  })
+})
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
@@ -44,7 +55,8 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000
+app.listen(PORT, () => {
   connect();
   console.log(`Server running at http://localhost:5000`);
 });

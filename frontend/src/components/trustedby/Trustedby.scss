@@ -10,6 +10,10 @@
         @media screen and (max-width: '999px') {
             padding: 20px;
         }
+
+        @media screen and (max-width: '499px') {
+            padding-bottom: 0px;  
+        }
         .head--text{
             display: flex;
             align-items: center;
@@ -34,6 +38,10 @@
             align-items: center;
             justify-content: space-between;
 
+            @media screen and (max-width: '499px') {
+                padding-top: 10px;  
+            }
+
             img{
                 width: 48px;
 
@@ -46,6 +54,11 @@
             }
             .hide {
                 @media screen and (max-width: '999px') {
+                    display: none;    
+                }
+            }
+            .hide--smll{
+                @media screen and (max-width: '360px') {
                     display: none;    
                 }
             }

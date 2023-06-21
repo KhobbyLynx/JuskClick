@@ -13,7 +13,7 @@ import Account from './pages/account/account'
 
 import './App.scss'
 import About from './pages/about/about'
-import Login from './pages/login/Login'
+import Login from './pages/account/login/Login'
 import RegisterClient from './pages/register/registerClient/RegisterClient'
 import RegisterFreelancer from './pages/register/registerFreelancer/RegisterFreelancer'
 import RegisterOpt from './pages/register/getStarted/RegisterOpt'

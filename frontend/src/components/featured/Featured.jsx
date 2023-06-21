@@ -8,11 +8,13 @@ const Featured = () => {
     <div className='featured'>
       <div className="container">
         <div className="left">
-          <h1>How work <br /> should work</h1>
-          <h4>
-            Forget the old rules. You can have the best people. <br />
-            Right now. Right here.
-          </h4>
+          <div className="text">
+            <h1>How work <br className='br'/> should work</h1>
+            <h4>
+              Forget the old rules. You can have the best people. <br />
+              Right now. Right here.
+            </h4>
+          </div>
           {/* <Link to='account' className='link'><button className='featuredBtn'>Get Started</button></Link> */}
           <div className="search">
             <input type="search" name="search" id="search" placeholder='Try "Building a Web App"'/>

@@ -1,0 +1,108 @@
+.home{
+    .section1--container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px 42px;
+    
+        @media screen and (max-width: '999px') {
+            flex-wrap: wrap;
+            padding: 60px 42px;
+            width: 100%;
+            margin: auto;
+        }
+        
+        .img{
+            flex-basis: 50%;
+            margin-right: 60px;
+    
+            @media screen and (max-width: '999px') {
+                flex-basis: 100%;
+            }
+            img{
+                width: 520px;
+                height: auto;
+                object-fit: cover;
+                @media screen and (max-width: '999px') {
+                    width: 320px;
+                }
+            }
+        }
+        .content--container{
+            flex-basis: 50%;
+            display: flex;
+            flex-direction: column;
+    
+             @media screen and (max-width: '999px') {
+                flex-basis: 100%;
+            }
+    
+            h2{
+                font-family: cursive;
+                font-size: 32px;
+                color: #444;
+            }
+    
+            .content{
+                padding: 20px 0;            
+                .item{
+                    display: flex;
+                    padding: 10px 0;
+                    .icon{
+                        font-size: 24px;
+                        margin: 3px 10px;
+                    }
+                    .text{
+                        width: 76%;
+                        h4{
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #666;
+                        }
+                        p{
+                            font-size: 13px;
+                            color: #888;
+                        }
+                    }       
+                }
+            }
+        }
+    
+        .btns{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+    
+            button{
+                padding: 10px 20px;
+                border-radius: 20px;
+                border: 2px solid #53A846;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover{
+                    border: 2px solid #4ac836;
+                }
+            }
+            
+            .btn1{
+                margin-right: 20px;
+                background-color: #53A846;
+                color: #fff;
+                &:hover{
+                    background-color: #4ac836;
+                }
+            }
+            
+            .btn2{
+                background-color: transparent;
+                color: #53A846;
+    
+                &:hover{
+                    color: #4ac836;
+                    background-color: rgba(0, 0, 0, 0.06);
+                }
+            }
+        }
+    }
+}

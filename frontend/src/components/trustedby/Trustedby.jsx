@@ -14,11 +14,11 @@ const Trustedby = () => {
             <div className="brands">
                 <img src={images.microsoft} alt="microsoft" />
                 <img className='hide' src={images.amazon} alt="amazon" />
-                <img src={images.airbnb} alt="airbnb" />
+                <img className='hide--smll' src={images.airbnb} alt="airbnb" />
                 <img className='hide' src={images.google} alt="google" />
                 <img className='hide' src={images.telstra} alt="telstra" />
                 <img src={images.nasa} alt="nasa" />
-                <img src={images.fb} alt="fb" />
+                <img className='hide--smll' src={images.fb} alt="fb" />
                 <img className='hide' src={images.airbus} alt="airbus" />
                 <img src={images.fujitsu} alt="fujitsu"/>
                 <img className='hide' src={images.deloitte} alt="deloitte" />

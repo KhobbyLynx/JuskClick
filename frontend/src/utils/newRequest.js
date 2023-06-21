@@ -1,8 +1,8 @@
-import axios from "axios"
+import axios from "axios";
 
 const newRequest = axios.create({
-    baseURL: "https://justclickapi.onrender.com/api",
-    withCredentials: true
-})
+  baseURL: "https://justclickapi.onrender.com/api",
+  withCredentials: true,
+});
 
-export default newRequest
+export default newRequest;

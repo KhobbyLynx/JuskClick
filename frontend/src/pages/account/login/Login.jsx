@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import newRequest from '../../utils/newRequest.js'
+import newRequest from '../../../utils/newRequest'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -37,6 +37,7 @@ const Login = () => {
       navigate("/")
       
     } catch (error) {
+      console.log(error)
       setError(error.response.data)
     }  
   }
@@ -69,8 +70,10 @@ const Login = () => {
           placeholder='Password'
         />
         <button>Log In</button>
-        {error && error}
+
       </form>
+        {error && <p className="error">{error}</p>}
+
       <div className="links">
         <Link className='link redirect' to='/account'>Register</Link>
         <Link className='link redirect' to='/account/reset'>Reset Password</Link>
